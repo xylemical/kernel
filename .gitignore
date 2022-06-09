@@ -1,0 +1,6 @@
+/vendor/
+/report/
+*.cache
+composer.lock
+bootstrap.php
+container.php

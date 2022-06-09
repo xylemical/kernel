@@ -1,0 +1,41 @@
+{
+  "name": "xylemical/kernel",
+  "type": "library",
+  "license": "MIT",
+  "description": "Provides an application kernel supported by controller behaviour.",
+  "keywords": [
+    "application",
+    "kernel"
+  ],
+  "homepage": "https://github.com/xylemical/kernel",
+  "autoload": {
+    "psr-4": {
+      "Xylemical\\Kernel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Xylemical\\Kernel\\": "tests/src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.0",
+    "xylemical/container": "dev-master",
+    "xylemical/controller": "dev-master",
+    "xylemical/config": "dev-master"
+  },
+  "require-dev": {
+    "xylemical/composer-dev-bundle": "^0.1.0"
+  },
+  "scripts": {
+    "tests": "vendor/bin/phpunit && vendor/bin/phpstan analyse && vendor/bin/phpcs",
+    "test-coverage": "php -dxdebug.mode=coverage vendor/bin/phpunit --coverage-html report"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  }
+}
