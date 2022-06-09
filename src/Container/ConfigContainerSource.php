@@ -196,7 +196,7 @@ class ConfigContainerSource extends AbstractSource {
             [
               'name' => 'service.collector',
               'tag' => 'requester',
-              'method' => 'addFactory',
+              'method' => 'addRequester',
             ],
           ],
         ],
@@ -209,7 +209,7 @@ class ConfigContainerSource extends AbstractSource {
             [
               'name' => 'service.collector',
               'tag' => 'responder',
-              'method' => 'addFactory',
+              'method' => 'addResponder',
             ],
           ],
         ],
