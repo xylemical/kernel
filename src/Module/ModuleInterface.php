@@ -51,4 +51,12 @@ interface ModuleInterface {
    */
   public function getContainer(): SourceInterface;
 
+  /**
+   * Get the root path for the module.
+   *
+   * @return string
+   *   The root.
+   */
+  public function getRoot(): string;
+
 }

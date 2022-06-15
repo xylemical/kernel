@@ -25,6 +25,8 @@ use Xylemical\Kernel\Account\AuthenticationFactory;
 use Xylemical\Kernel\Account\AuthorizationFactory;
 use Xylemical\Kernel\InformationInterface;
 use Xylemical\Kernel\MiddlewareFactory;
+use Xylemical\Kernel\Module\ModuleCapability;
+use Xylemical\Kernel\Module\ModuleCapabilityInterface;
 use Xylemical\Kernel\Module\ModuleDiscovery;
 use Xylemical\Kernel\Module\ModuleDiscoveryInterface;
 use Xylemical\Kernel\Module\ModuleFactory;
@@ -130,6 +132,16 @@ class ConfigContainerSource extends AbstractSource {
               'name' => 'service.collector',
               'tag' => 'middleware_factory',
               'method' => 'addFactory',
+            ],
+          ],
+        ],
+        ModuleCapabilityInterface::class => [
+          'class' => ModuleCapability::class,
+          'tags' => [
+            [
+              'name' => 'service.collector',
+              'tag' => 'module_capability',
+              'method' => 'addCapability',
             ],
           ],
         ],
