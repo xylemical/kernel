@@ -12,17 +12,6 @@ use Psr\Http\Message\ResponseInterface;
 interface ResponseListenerInterface {
 
   /**
-   * Check the listener applies to the response.
-   *
-   * @param \Psr\Http\Message\ResponseInterface $response
-   *   The response.
-   *
-   * @return bool
-   *   The result.
-   */
-  public function applies(ResponseInterface $response): bool;
-
-  /**
    * Listen to the response.
    *
    * @param \Psr\Http\Message\ResponseInterface $response

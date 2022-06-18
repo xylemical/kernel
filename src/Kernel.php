@@ -229,9 +229,7 @@ final class Kernel {
     if ($container->has(RequestListenerInterface::class)) {
       /** @var \Xylemical\Kernel\RequestListenerInterface $listener */
       $listener = $container->get(RequestListenerInterface::class);
-      if ($listener->applies($request)) {
-        $request = $listener->listen($request);
-      }
+      $request = $listener->listen($request);
     }
 
     $this->request = $request;
@@ -259,9 +257,7 @@ final class Kernel {
 
     if ($container->has(RouteListenerInterface::class)) {
       $listener = $container->get(RouteListenerInterface::class);
-      if ($listener->applies($route)) {
-        $route = $listener->listen($route);
-      }
+      $route = $listener->listen($route);
     }
 
     $this->route = $route;

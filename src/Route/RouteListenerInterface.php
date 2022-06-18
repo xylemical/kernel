@@ -12,17 +12,6 @@ use Xylemical\Controller\RouteInterface;
 interface RouteListenerInterface {
 
   /**
-   * Check the listener applies to the route.
-   *
-   * @param \Xylemical\Controller\RouteInterface $route
-   *   The route.
-   *
-   * @return bool
-   *   The result.
-   */
-  public function applies(RouteInterface $route): bool;
-
-  /**
    * Listen to the route.
    *
    * @param \Xylemical\Controller\RouteInterface $route

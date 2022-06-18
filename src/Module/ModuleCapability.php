@@ -19,25 +19,13 @@ class ModuleCapability implements ModuleCapabilityInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(ModuleInterface $module, string $service): bool {
-    foreach ($this->capabilities as $capability) {
-      if ($capability->applies($module, $service)) {
-        return TRUE;
-      }
-    }
-    return FALSE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getHandler(ModuleInterface $module, string $service): mixed {
     foreach ($this->capabilities as $capability) {
-      if ($capability->applies($module, $service)) {
-        return $capability->getHandler($module, $service);
+      if ($handler = $capability->getHandler($module, $service)) {
+        return $handler;
       }
     }
-    throw new \InvalidArgumentException();
+    return NULL;
   }
 
   /**

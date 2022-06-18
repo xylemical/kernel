@@ -18,15 +18,11 @@ class WebRequestReader implements RequestReaderInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(): bool {
-    return $this->isWeb();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRequest(): ServerRequestInterface {
-    return ServerRequest::createFromGlobals();
+  public function getRequest(): ?ServerRequestInterface {
+    if ($this->isWeb()) {
+      return ServerRequest::createFromGlobals();
+    }
+    return NULL;
   }
 
 }

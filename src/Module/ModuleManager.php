@@ -54,8 +54,7 @@ class ModuleManager implements ModuleManagerInterface {
     $this->storage = $storage;
     $this->installer = $installer;
     foreach ($discovery->getPaths($info->getRoot()) as $path) {
-      if ($processor->applies($path)) {
-        $module = $processor->getModule($path);
+      if ($module = $processor->getModule($path)) {
         $this->modules[$module->getName()] = $module;
       }
     }

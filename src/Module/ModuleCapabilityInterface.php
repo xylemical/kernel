@@ -10,23 +10,6 @@ namespace Xylemical\Kernel\Module;
 interface ModuleCapabilityInterface {
 
   /**
-   * Check the module supports the service.
-   *
-   * @codingStandardsIgnoreStart
-   *
-   * @param \Xylemical\Kernel\Module\ModuleInterface $module
-   *   The module.
-   * @param class-string $service
-   *   The service class name.
-   *
-   * @codingStandardsIgnoreEnd
-   *
-   * @return bool
-   *   The result.
-   */
-  public function applies(ModuleInterface $module, string $service): bool;
-
-  /**
    * Get a module capability handler.
    *
    * @codingStandardsIgnoreStart
@@ -40,8 +23,8 @@ interface ModuleCapabilityInterface {
    *
    * @codingStandardsIgnoreEnd
    *
-   * @return T
-   *   The service.
+   * @return T|null
+   *   The service or null.
    */
   public function getHandler(ModuleInterface $module, string $service): mixed;
 

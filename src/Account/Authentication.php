@@ -43,13 +43,6 @@ class Authentication implements AuthenticationInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(RouteInterface $route): bool {
-    return $this->authentication->applies($route);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function authenticate(RouteInterface $route): ?AccountInterface {
     if ($account = $this->authentication->authenticate($route)) {
       $this->provider->setAccount($account);

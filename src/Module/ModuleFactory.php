@@ -19,25 +19,13 @@ class ModuleFactory implements ModuleFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(string $path): bool {
+  public function getModule(string $path): ?ModuleInterface {
     foreach ($this->factories as $factory) {
-      if ($factory->applies($path)) {
-        return TRUE;
+      if ($module = $factory->getModule($path)) {
+        return $module;
       }
     }
-    return FALSE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getModule(string $path): ModuleInterface {
-    foreach ($this->factories as $factory) {
-      if ($factory->applies($path)) {
-        return $factory->getModule($path);
-      }
-    }
-    throw new \InvalidArgumentException("{$path} is not a valid module path.");
+    return NULL;
   }
 
   /**
