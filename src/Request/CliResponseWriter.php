@@ -17,14 +17,11 @@ class CliResponseWriter implements ResponseWriterInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(ResponseInterface $response): bool {
-    return $this->isCli();
-  }
+  public function putResponse(ResponseInterface $response): ?int {
+    if (!$this->isCli()) {
+      return NULL;
+    }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function putResponse(ResponseInterface $response): int {
     $cli = $this->parse();
 
     if ($output = $cli->getOption('--output')) {

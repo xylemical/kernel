@@ -18,14 +18,11 @@ class CliRequestReader implements RequestReaderInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(): bool {
-    return $this->isCli();
-  }
+  public function getRequest(): ?ServerRequestInterface {
+    if (!$this->isCli()) {
+      return NULL;
+    }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getRequest(): ServerRequestInterface {
     $cli = $this->parse();
 
     $server = [];

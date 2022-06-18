@@ -25,7 +25,7 @@ class ProcessorFactory implements ProcessorFactoryInterface {
    */
   public function getProcessor(RouteInterface $route, mixed $contents): ProcessorInterface {
     foreach ($this->processors as $processor) {
-      if ($processor->applies($route, $contents)) {
+      if (!is_null($processor->getResult($route, $contents))) {
         return $processor;
       }
     }

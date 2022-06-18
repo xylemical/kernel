@@ -18,14 +18,11 @@ class WebResponseWriter implements ResponseWriterInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(ResponseInterface $response): bool {
-    return $this->isWeb();
-  }
+  public function putResponse(ResponseInterface $response): ?int {
+    if (!$this->isWeb()) {
+      return NULL;
+    }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function putResponse(ResponseInterface $response): int {
     if (!headers_sent()) {
       header(sprintf('HTTP/%s %d %s',
         $response->getProtocolVersion(),

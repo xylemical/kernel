@@ -44,11 +44,8 @@ class RouteFactory implements RouteFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function getRoute(ServerRequestInterface $request): RouteInterface {
-    if ($this->matcher->applies($request)) {
-      return $this->matcher->getRoute($request, $this->contextFactory->getContext($request));
-    }
-    throw new \InvalidArgumentException("Unable to match route for request.");
+  public function getRoute(ServerRequestInterface $request): ?RouteInterface {
+    return $this->matcher->getRoute($request, $this->contextFactory->getContext($request));
   }
 
 }

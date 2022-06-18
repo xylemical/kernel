@@ -14,17 +14,6 @@ use Xylemical\Controller\RouteInterface;
 interface RouteMatcherInterface {
 
   /**
-   * Check the request matches a route.
-   *
-   * @param \Psr\Http\Message\ServerRequestInterface $request
-   *   The request.
-   *
-   * @return bool
-   *   The result.
-   */
-  public function applies(ServerRequestInterface $request): bool;
-
-  /**
    * Get the route matching the request.
    *
    * @param \Psr\Http\Message\ServerRequestInterface $request
@@ -32,9 +21,9 @@ interface RouteMatcherInterface {
    * @param \Xylemical\Controller\ContextInterface $context
    *   The context.
    *
-   * @return \Xylemical\Controller\RouteInterface
+   * @return \Xylemical\Controller\RouteInterface|null
    *   The route.
    */
-  public function getRoute(ServerRequestInterface $request, ContextInterface $context): RouteInterface;
+  public function getRoute(ServerRequestInterface $request, ContextInterface $context): ?RouteInterface;
 
 }

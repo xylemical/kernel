@@ -26,7 +26,7 @@ class ResponderFactory implements ResponderFactoryInterface {
    */
   public function getResponder(RouteInterface $route, ResultInterface $result): ResponderInterface {
     foreach ($this->responders as $responder) {
-      if ($responder->applies($route, $result)) {
+      if (!is_null($responder->getResponse($route, $result))) {
         return $responder;
       }
     }

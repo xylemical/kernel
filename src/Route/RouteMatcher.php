@@ -23,25 +23,13 @@ class RouteMatcher implements RouteMatcherInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(ServerRequestInterface $request): bool {
+  public function getRoute(ServerRequestInterface $request, ContextInterface $context): ?RouteInterface {
     foreach ($this->matchers as $matcher) {
-      if ($matcher->applies($request)) {
-        return TRUE;
+      if ($route = $matcher->getRoute($request, $context)) {
+        return $route;
       }
     }
-    return FALSE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRoute(ServerRequestInterface $request, ContextInterface $context): RouteInterface {
-    foreach ($this->matchers as $matcher) {
-      if ($matcher->applies($request)) {
-        return $matcher->getRoute($request, $context);
-      }
-    }
-    throw new \InvalidArgumentException("No route found.");
+    return NULL;
   }
 
   /**

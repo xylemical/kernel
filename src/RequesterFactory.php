@@ -25,7 +25,7 @@ class RequesterFactory implements RequesterFactoryInterface {
    */
   public function getRequester(RouteInterface $route): RequesterInterface {
     foreach ($this->requesters as $requester) {
-      if ($requester->applies($route)) {
+      if (is_null($requester->getBody($route))) {
         return $requester;
       }
     }
